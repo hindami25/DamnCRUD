@@ -56,8 +56,6 @@ jobs:
           pytest --maxfail=5 --disable-warnings --verbose -n 4
 
       # --- Add OWASP ZAP Dynamic Application Security Testing (DAST) ---
-      - name: Create ZAP isolated network
-        run: docker network create --driver bridge zap-isolated
 
       - name: ZAP Scan
         uses: hermanka/action-full-scan@master
@@ -65,7 +63,7 @@ jobs:
           target: ${{ env.URL }}
           network_name: zap-isolated
           cmd_options: "-x http://localhost:8080 -u http://localhost/login -d 'username=admin&password=nimda666!'"        
-          artifact-name: "zap_scan_report"
+          artifact_name: "zap_scan_report"
 
       - name: Stop Docker
         run: docker stop docker-apache
