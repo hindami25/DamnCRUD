@@ -7,7 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # Fixture untuk WebDriver
 @pytest.fixture(scope="function")
-def setUp(self):
+def driver(self):
     options = webdriver.FirefoxOptions()
     options.add_argument('--ignore-ssl-errors=yes')
     options.add_argument('--ignore-certificate-errors')
