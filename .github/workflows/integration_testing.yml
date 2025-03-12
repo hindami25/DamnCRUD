@@ -62,4 +62,4 @@ jobs:
           path: screenshot.png
 
       - name: Stop Docker
-        run: docker stop docker-apache selenium-hub
+        run: docker stop docker-apache
