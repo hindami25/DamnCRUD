@@ -62,7 +62,7 @@ jobs:
         with:
           target: ${{ env.URL }}
           network_name: isolated
-          cmd_options: "-x http://localhost:8080 -u http://localhost/login -d 'username=admin&password=nimda666!'"        
+          cmd_options: "-x http://localhost:8080 -u http://localhost/login.php -d 'username=admin&password=nimda666!'"        
           artifact_name: "zap_scan_report"
 
       - name: Stop Docker
