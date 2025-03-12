@@ -7,15 +7,14 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # Fixture untuk WebDriver
 @pytest.fixture(scope="function")
-def driver():
-    options = webdriver.ChromeOptions()
+def setUp(self):
+    options = webdriver.FirefoxOptions()
     options.add_argument('--ignore-ssl-errors=yes')
     options.add_argument('--ignore-certificate-errors')
-    driver = webdriver.Chrome(options=options)
-    
-    # Cleanup after test case selesai
-    yield driver
-    driver.quit()
+    server = 'http://localhost:4444'
+
+    self.browser = webdriver.Remote(command_executor=server, options=options)
+    self.addCleanup(self.browser.quit)
 
 # Test Case 1: Login dan Verifikasi Arahkan ke Dashboard
 def test_case_1(driver):
