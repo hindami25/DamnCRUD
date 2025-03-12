@@ -64,10 +64,7 @@ jobs:
         with:
           target: ${{ env.URL }}
           network_name: zap-isolated
-          authentication-method: "form"         # Autentikasi form
-          login-url: "http://localhost/login"    # URL halaman login
-          login-params: "username=admin&password=nimda666!"  # Parameter login
-          fail-action: "continue"
+          cmd_options: "-x http://localhost:8080 -u http://localhost/login -d 'username=admin&password=nimda666!'"        
           artifact-name: "zap_scan_report"
 
       - name: Stop Docker
